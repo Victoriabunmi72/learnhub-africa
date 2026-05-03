@@ -46,6 +46,25 @@ header p {
     opacity: 0.9;
 }
 
+.saved-section {
+    background: #ffffff;
+    margin: 30px auto;
+    padding: 20px;
+    max-width: 800px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+#savedList {
+    margin-top: 15px;
+}
+
+.saved-item {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    font-size: 0.95rem;
+}
+
 .resources {
     display: block;
     justify-content: center;

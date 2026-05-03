@@ -22,6 +22,24 @@ function applyFilters() {
     });
 }
 
+const savedList = document.getElementById("savedList");
+
+function displaySavedItems() {
+    savedList.innerHTML = "";
+
+    if (savedItems.length === 0) {
+        savedList.innerHTML = "<p>No saved resources yet.</p>";
+        return;
+    }
+
+    savedItems.forEach(item => {
+        const div = document.createElement("div");
+        div.classList.add("saved-item");
+        div.textContent = item;
+        savedList.appendChild(div);
+    });
+}
+
 // 🔍 Search typing
 searchInput.addEventListener("keyup", applyFilters);
 
@@ -44,14 +62,19 @@ saveButtons.forEach((btn, index) => {
         if (savedItems.includes(title)) {
             savedItems = savedItems.filter(item => item !== title);
             btn.textContent = "⭐ Save";
+            btn.classList.remove("saved");
         } else {
             savedItems.push(title);
             btn.textContent = "✅ Saved";
+            btn.classList.add("saved");
         }
 
         localStorage.setItem("saved", JSON.stringify(savedItems));
     });
 });
+
+localStorage.setItem("saved", JSON.stringify(savedItems));
+displaySavedItems();
 
 document.querySelectorAll(".card").forEach(card => {
     const title = card.querySelector("h2").textContent;
@@ -59,5 +82,8 @@ document.querySelectorAll(".card").forEach(card => {
 
     if (savedItems.includes(title)) {
         btn.textContent = "✅ Saved";
+        btn.classList.add("saved");
     }
 });
+
+displaySavedItems();
