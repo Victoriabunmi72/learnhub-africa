@@ -107,11 +107,22 @@ header p {
 
 .card {
     transition: all 0.3s ease;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeIn 0.5s ease forwards;
 }
 
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
 .card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 15px 30px rgba(10, 102, 194, 0.2);
 }
 
 .card-container {
@@ -149,12 +160,16 @@ header p {
 }
 
 #searchInput {
-    width: 50%;
-    min-width: 250px;
+    padding: 10px;
+    border-radius: 25px;
+    border: 1px solid #ccc;
+    outline: none;
+    transition: 0.3s;
 }
 
 #searchInput:focus {
     border-color: #0a66c2;
+    box-shadow: 0 0 10px rgba(10, 102, 194, 0.3);
 }
 
 .category-buttons {
@@ -179,6 +194,10 @@ header p {
 .category-buttons button:hover {
     background: linear-gradient(135deg, #004182, #0a66c2);
     transform: scale(1.05);
+}
+
+.category-buttons button:active {
+    transform: scale(0.95);
 }
 
 .beginner-tip {
@@ -231,4 +250,27 @@ header p {
     background: #0a66c2;
     color: white;
     margin-top: 40px;
+}
+
+.save-btn {
+    margin-top: 10px;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 20px;
+    background: #f0f4ff;
+    color: #0a66c2;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.save-btn:hover {
+    background: #0a66c2;
+    color: white;
+    transform: scale(1.05);
+}
+
+.save-btn.saved {
+    background: #0a66c2;
+    color: white;
 }
